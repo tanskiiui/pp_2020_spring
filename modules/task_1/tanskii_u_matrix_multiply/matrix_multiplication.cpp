@@ -1,12 +1,14 @@
 // Copyright 2020 Tanskii Yurii
-#include"matrix_multiplication.h"
 #include <limits>
 #include<stdexcept>
 #include <random>
+#include <vector>
+#include <cmath>
+#include"../../../modules/task_1/tanskii_u_matrix_multiply/matrix_multiplication.h"
 
 double eps = std::numeric_limits<double>::epsilon();
 
-MMatrix::MMatrix(std::vector<std::vector<double>> Matrix) {   
+MMatrix::MMatrix(std::vector<std::vector<double>> Matrix) {
     if (Matrix.size() <= 0 || Matrix[0].size() <= 0)
         throw std::runtime_error("Incorrect size of matrix");
     row = Matrix.size();
@@ -23,6 +25,15 @@ MMatrix::MMatrix(std::vector<std::vector<double>> Matrix) {
         }
         indexRow.push_back(PositiveElems);
     }
+}
+
+MMatrix::MMatrix(std::vector<double> val, std::vector<size_t> iRow, std::vector<size_t> iCol,
+    size_t _row, size_t _col) {
+    value = val;
+    indexCol = iCol;
+    indexRow = iRow;
+    row = _row;
+    col = _col;
 }
 
 MMatrix MMatrix::Transpose() {
@@ -52,7 +63,7 @@ MMatrix MMatrix::Transpose() {
 
 std::vector<std::vector<double>> NaiveMultiplication(std::vector<std::vector<double>> Matrix1,
     std::vector<std::vector<double>> Matrix2) {
-    if(Matrix1[0].size() != Matrix2.size())
+    if (Matrix1[0].size() != Matrix2.size())
         throw std::runtime_error("Incorrect size of Multiplying matrix");
     std::vector<std::vector<double>> result;
     size_t rows_m1 = Matrix1.size();
@@ -63,8 +74,7 @@ std::vector<std::vector<double>> NaiveMultiplication(std::vector<std::vector<dou
         result[i].resize(cols_m2);
     }
     for (size_t i = 0; i < rows_m1; i++)
-        for (size_t j = 0; j < cols_m2; j++)
-        {
+        for (size_t j = 0; j < cols_m2; j++) {
             result[i][j] = 0;
             for (size_t k = 0; k < cols_m1; k++)
                 result[i][j] += Matrix1[i][k] * Matrix2[k][j];
@@ -73,7 +83,6 @@ std::vector<std::vector<double>> NaiveMultiplication(std::vector<std::vector<dou
 }
 
 MMatrix MMatrix::DischargeMultiply(const MMatrix& Matrix2) {
-  
     MMatrix result;
     result.row = row;
     result.col = Matrix2.col;
@@ -99,14 +108,14 @@ MMatrix MMatrix::DischargeMultiply(const MMatrix& Matrix2) {
 }
 
 bool MMatrix::operator== (const MMatrix& Matrix) const& {
-    if (row != Matrix.row || col!= Matrix.col || 
-        value.size() != Matrix.value.size() || 
-        indexRow.size() != Matrix.indexRow.size() || 
+    if (row != Matrix.row || col!= Matrix.col ||
+        value.size() != Matrix.value.size() ||
+        indexRow.size() != Matrix.indexRow.size() ||
         indexCol.size() != Matrix.indexCol.size()) {
         return false;
     }
     for (size_t i = 0; i < value.size(); i++) {
-        if (std::abs(value[i] - Matrix.value[i] > eps))
+        if (std::abs(value[i] - Matrix.value[i]) > eps)
             return false;
     }
     return true;
@@ -125,13 +134,13 @@ std::vector<std::vector<double>>  GetRandomMatrix(size_t row, size_t col, double
     std::mt19937 gen(rd());
     std::uniform_real_distribution<double> disValue(0.0, 100.0);
     std::uniform_int_distribution<int> disPercent(0, 100);
-    for (size_t i = 0; i < row; i++){
+    for (size_t i = 0; i < row; i++) {
         for (size_t j = 0; j < col; j++) {
             result[i][j] = 0.0;
             if (disPercent(gen) < percent) {
                 result[i][j] = disValue(gen);
             }
-        } 
+        }
     }
     return result;
 }
