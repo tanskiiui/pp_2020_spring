@@ -54,7 +54,7 @@ TEST(Matrix_Multiplication, Can_Multiply_Sparse_Matrix) {
     ASSERT_EQ(tmp, sparseC);
 }
 
-TEST(Matrix_Multiplication, Sparse_Multiply_Equal_Naive) {
+TEST(Matrix_Multiplication, Sparse_Multiply_Equal_naive) {
 
     std::vector<vector<double>> A { { 1.2, 0.0, 0.0, 0.0 },
                                        { 0.0, 0.0, 3.4, 0.0 },
