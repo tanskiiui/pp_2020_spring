@@ -1,3 +1,4 @@
+// Copyright 2020 Tanskii Yurii
 #include <gtest/gtest.h>
 #include <vector>
 #include "../../../modules/task_1/tanskii_u_matrix_multiply/matrix_multiplication.h"
@@ -5,7 +6,7 @@
 TEST(Matrix_Multiplication, Can_Random_Matrix) {
     size_t row = 5;
     size_t col = 5;
-    std::vector<std::vector<double>> result = GetRandomMatrix(row,col, 5);
+    std::vector<std::vector<double>> result = GetRandomMatrix(row, col, 5);
     size_t n = 25;
     size_t elems_c = result.size() * result[0].size();
     EXPECT_EQ(n, elems_c);
@@ -33,7 +34,6 @@ TEST(Matrix_Multiplication, Can_Throw_Incorrect_Matrix) {
 }
 
 TEST(Matrix_Multiplication, Can_Multiply_Sparse_Matrix) {
-   
     std::vector<vector<double>> A { { 1.2, 0.0, 0.0, 0.0 },
                                        { 0.0, 0.0, 3.4, 0.0 },
                                        { 0.0, 2.5, 0.0, 0.0 },
@@ -55,7 +55,6 @@ TEST(Matrix_Multiplication, Can_Multiply_Sparse_Matrix) {
 }
 
 TEST(Matrix_Multiplication, Sparse_Multiply_Equal_naive) {
-
     std::vector<vector<double>> A { { 1.2, 0.0, 0.0, 0.0 },
                                        { 0.0, 0.0, 3.4, 0.0 },
                                        { 0.0, 2.5, 0.0, 0.0 },
