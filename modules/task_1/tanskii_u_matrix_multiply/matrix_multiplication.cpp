@@ -27,6 +27,15 @@ MMatrix::MMatrix(std::vector<std::vector<double>> Matrix) {
     }
 }
 
+MMatrix::MMatrix(std::vector<double> val, std::vector<size_t> iRow, std::vector<size_t> iCol,
+    size_t _row, size_t _col) {
+    value = val;
+    indexCol = iCol;
+    indexRow = = iRow;
+    row = _row;
+    col = _col;
+}
+
 MMatrix MMatrix::Transpose() {
     MMatrix result;
     result.col = col;
