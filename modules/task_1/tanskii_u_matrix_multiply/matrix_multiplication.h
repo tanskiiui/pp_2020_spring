@@ -6,8 +6,8 @@
 
 class MMatrix {
     std::vector<double> value;
-    std::vector<size_t> indexRow;
     std::vector<size_t> indexCol;
+    std::vector<size_t> indexRow;
     size_t row, col;
 
  public:

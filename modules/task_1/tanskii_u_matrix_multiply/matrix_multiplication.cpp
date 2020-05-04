@@ -2,6 +2,7 @@
 #include <limits>
 #include<stdexcept>
 #include <random>
+#include <vector>
 #include"../../../modules/task_1/tanskii_u_matrix_multiply/matrix_multiplication.h"
 
 double eps = std::numeric_limits<double>::epsilon();
