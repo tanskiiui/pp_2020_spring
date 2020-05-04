@@ -31,7 +31,7 @@ MMatrix::MMatrix(std::vector<double> val, std::vector<size_t> iRow, std::vector<
     size_t _row, size_t _col) {
     value = val;
     indexCol = iCol;
-    indexRow = = iRow;
+    indexRow = iRow;
     row = _row;
     col = _col;
 }
