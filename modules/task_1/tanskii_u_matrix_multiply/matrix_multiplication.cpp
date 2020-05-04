@@ -105,7 +105,7 @@ bool MMatrix::operator== (const MMatrix& Matrix) const& {
         return false;
     }
     for (size_t i = 0; i < value.size(); i++) {
-        if (std::abs(value[i] - Matrix.value[i] > eps))
+        if (std::abs(value[i] - Matrix.value[i]) > eps)
             return false;
     }
     return true;
