@@ -90,5 +90,5 @@ TEST(Matrix_Multiplication, Can_Transpose_Matrix) {
     MMatrix sparseMatrix(A);
     MMatrix transMatrix = sparseMatrix.Transpose();
     MMatrix sparseAT(AT);
-    EXPECT_EQ(AT, transMatrix);
+    EXPECT_EQ(sparseAT, transMatrix);
 }
