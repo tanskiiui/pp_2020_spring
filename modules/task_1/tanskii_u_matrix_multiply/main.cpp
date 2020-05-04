@@ -75,7 +75,7 @@ TEST(Matrix_Multiplication, Sparse_Multiply_Equal_naive) {
     sparseResult = sparseA.DischargeMultiply(sparseB);
     naiveResult = NaiveMultiplication(A, B);
     MMatrix sparseNaive(naiveResult);
-    ASSERT_EQ(naiveResult, sparseResult);
+    ASSERT_EQ(sparseNaive, sparseResult);
 }
 
 TEST(Matrix_Multiplication, Can_Transpose_Matrix) {
